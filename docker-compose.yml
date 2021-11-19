@@ -1,0 +1,21 @@
+
+version: '3.7'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: .docker/Dockerfile
+        image: 'shouts.dev/laravel'
+        container_name: google-laravel-app
+        ports:
+            - "8200:80"
+            - "8243:443"
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - laravel-gda
+
+networks:
+    laravel-gda:
+        driver: bridge      
